@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from '../api'
 import { FaSearch } from 'react-icons/fa'
 import Navbar from './Navbar'
@@ -9,17 +9,37 @@ const Header = () => {
   const [buscaAberto, setBuscaAberto] = useState(false)  //gerenciar o estado booleano dela para abrir o input
   const [busca, setBusca] = useState("")  //utilizado para armazenar o que for digitado no input da busca
 
+  //Uma referência que é anexado ao input de busca
+  const inputRef = useRef(null)
 
-  useEffect(()=>{            //Utilizei a biblioteca axios para consumir a api. A base da url foi
-    axios.get("/v1/agents")  //A base do endpoint foi importada do index da pasta api
+  //Utilizei a biblioteca axios para consumir a api. A base do endpoint foi importada do index da pasta api
+  useEffect(()=>{            
+    axios.get("/v1/agents")  
     .then(response => {return response.data})
-    .then(response => setLista(response.data))
+    //atribui a lista os dados e filtrei dela o sova repetido
+    .then(response => setLista(response.data.filter(agente => agente.isPlayableCharacter === true)))
     .catch(error => console.error("Ocorreu um erro: ", error))
   }, [])
 
-  const abrirBusca = () =>{
-    setBuscaAberto(!buscaAberto) //função que ao ser utilizado vai mudar o valor booleano para o contrário que estava
+  //função que ao ser utilizado vai mudar o valor booleano para o contrário que estava
+  const abrirBusca = async () =>{
+    setBuscaAberto(!buscaAberto)
   }
+
+  //useEffect para toda vez que a busca for aberta o input ja ficar em "focus" e se tiver fechado tirar o valor da "busca"
+  useEffect(() => {
+    if(buscaAberto){
+      inputRef.current.focus()
+    }
+    if(buscaAberto === false){
+      setBusca("")
+    }
+  }, [buscaAberto])
+ 
+
+  // fazer map de classe 
+
+
 
   return (
     <div>
@@ -30,9 +50,13 @@ const Header = () => {
           name='busca' 
           id='busca' 
           placeholder='Pesquisar'
+          ref={inputRef}
           value={busca} 
           onChange={e => setBusca(e.target.value)}
         />)}
+        {lista.map(agente => 
+          (<li>{agente.rule.displayName}</li>)
+        )}
       {busca && (
         <ul>
           {lista
