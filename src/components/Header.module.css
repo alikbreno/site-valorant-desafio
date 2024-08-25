@@ -1,0 +1,104 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #262626;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.lupa {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.lupa input {
+    border: none;
+    background-color: #2B3A45;
+    color: #F3F4F6;
+    padding: 8px;
+    border-radius: 4px;
+    outline: none;
+    transition: width 0.3s ease-in-out;
+    width: 0;
+    opacity: 0;
+}
+
+.lupa input:focus {
+    width: 200px;
+    opacity: 1;
+}
+
+.lupa svg {
+    color: #F3F4F6;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.lupa svg:hover {
+    color: #EB4E62;
+}
+
+.menu a {
+    color: #F3F4F6;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #EB4E62;
+}
+
+.menu{
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+.listaPesquisa a{
+    text-decoration: none;
+    color: #EB4E62;
+}
+
+.listaPesquisa ul {
+    list-style-type: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    background-color: #2B3A45;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.listaPesquisa li {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #3A4655;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.listaPesquisa li:hover {
+    background-color: #3A4655;
+}
+
+.listaPesquisa img {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+}
+.listaPesquisa {
+    width: 200px;
+}
+
+
+@media (max-width: 768px) {
+
+    .listaPesquisa {
+        width: 100%;
+    }
+}
