@@ -3,9 +3,11 @@ import axios from '../api'
 import Cards from '../components/Cards'
 
 const CadaAgent = ({ id }) => {
-
+    
+    //useState que vai armazenar o array de agentes
     const [agentes, setAgentes] = useState([])
 
+    //Consumindo a api
     useEffect(()=>{
       axios.get('/v1/agents')
       .then(response => {return response.data})

@@ -9,7 +9,7 @@ const Inicial = () => {
   useEffect(() => {
     axios.get('/v1/maps')
     .then(response => {return response.data})
-    ////atribui ao array "mapas" os dados e filtrei dela os mapas sem bombside
+    ////atribui ao array "mapas" os dados e filtrei dela os mapas sem bombsite
     .then(response => setMapas(response.data.filter(mapa => mapa.tacticalDescription !== null)))
     .catch(error => console.error("Ocorreu um erro: ", error))
   }, [])

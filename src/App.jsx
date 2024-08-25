@@ -8,8 +8,10 @@ import CadaAgent from './pages/CadaAgent'
 
 const App = () => {
 
+  //useState que vai armazenar o array de agentes
   const [agentes, setAgentes] = useState([])
 
+  //Consumindo a api
   useEffect(()=>{
     axios.get('/v1/agents')
     .then(response => {return response.data})

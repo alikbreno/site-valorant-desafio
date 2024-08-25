@@ -5,8 +5,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Agentes = () => {
 
+  //useState que vai armazenar o array de agentes
   const [agentes, setAgentes] = useState([])
 
+  //Consumindo a api
   useEffect(()=>{
     axios.get('/v1/agents')
     .then(response => {return response.data})

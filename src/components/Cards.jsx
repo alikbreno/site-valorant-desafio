@@ -3,13 +3,18 @@ import style from './Cards.module.css'
 
 const Cards = ({ img, nome, descricao, classe, iconeClasse, background, habilidades }) => {
 
+    //Criada para armazenar o array das habilidades
     const [lista, setLista] = useState([])
-    const [mensagem, setMensagem] = useState(false)
 
+    //Estado booleano para ativar ou desativar a descrição das habilidades
+    const [mensagem, setMensagem] = useState(false) 
+
+    //useEffect para atribuir a "lista" o array de habilidades
     useEffect(() => {
         setLista(habilidades)
     }, [])
 
+    //Função para mudar o valor de mensagem ao ser clicado
     const abrirSkill = () => {
         setMensagem(!mensagem)
     }
