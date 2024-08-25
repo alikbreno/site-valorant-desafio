@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../api'
+import Cards from '../components/Cards'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-const Agentes = ({ id }) => {
+const Agentes = () => {
 
   const [agentes, setAgentes] = useState([])
 
@@ -14,8 +16,30 @@ const Agentes = ({ id }) => {
 
 
   return (
-    <div>
-      
+    <div className='container-carrossel'>
+      <h1>Agentes</h1>
+
+      <Swiper
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        navigation
+      >
+        {agentes.map(agente => (
+          <SwiperSlide key={agente.uuid}>
+            <div className='cards-carrossel'> 
+            <Cards 
+              img={agente.fullPortrait} 
+              nome={agente.displayName} 
+              descricao={agente.description} 
+              classe={agente.role.displayName} 
+              iconeClasse={agente.role.displayIcon}
+              background={agente.background}
+              habilidades={agente.abilities}
+            />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   )
 }

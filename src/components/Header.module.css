@@ -61,7 +61,7 @@
 
 .listaPesquisa a{
     text-decoration: none;
-    color: #EB4E62;
+    color: white;
 }
 
 .listaPesquisa ul {
@@ -84,6 +84,10 @@
 
 .listaPesquisa li:hover {
     background-color: #3A4655;
+}
+
+.listaPesquisa a:hover{
+    color: #EB4E62;
 }
 
 .listaPesquisa img {

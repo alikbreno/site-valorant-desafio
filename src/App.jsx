@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Inicial from './pages/Inicial'
 import Agentes from './pages/Agentes'
 import axios from './api'
+import CadaAgent from './pages/CadaAgent'
 
 const App = () => {
 
@@ -24,7 +25,7 @@ const App = () => {
           <Route path='/' element={<Inicial/>}/>
           <Route path='/agentes' element={<Agentes/>}/>
           {agentes.map(agente => (
-            <Route key={agente.uuid} path={`/agentes/${agente.uuid}`} element={<Agentes id={agente.uuid}/>}/>
+            <Route key={agente.uuid} path={`/agents/${agente.uuid}`} element={<CadaAgent id={agente.uuid}/>}/>
           ))}
         </Routes>
       </BrowserRouter>

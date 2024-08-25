@@ -77,7 +77,7 @@ const Header = () => {
                 const nome = agente.displayName.toLowerCase()
                 return nome.includes(busca.toLowerCase()) || classe.includes(busca.toLowerCase())
               })
-              .map(agente => (<li key={agente.uuid}><Link to={`/agentes/${agente.uuid}`}>{agente.displayName} <img className={style.img} src={agente.role.displayIcon} alt="role" /></Link></li>))}
+              .map(agente => (<Link key={agente.uuid} to={`/agents/${agente.uuid}`}><li>{agente.displayName} <img className={style.img} src={agente.role.displayIcon} alt="role" /></li></Link>))}
           </ul>)}
       </div>
     </div>
