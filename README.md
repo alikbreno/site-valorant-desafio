@@ -1,4 +1,4 @@
-# Projeto do workshop - Site Valorant
+# Projeto do workshop - Site Valorant (em desenvolvimento)
 
 ## Descrição
 
